@@ -1,0 +1,66 @@
+/**
+// Body
+$body-bg: #f8fafc;
+
+// Typography
+$font-family-sans-serif: 'Nunito', sans-serif;
+$font-size-base: 0.9rem;
+$line-height-base: 1.6;
+
+// Colors
+$blue: #3490dc;
+$indigo: #6574cd;
+$purple: #9561e2;
+$pink: #f66d9b;
+$red: #e3342f;
+$orange: #f6993f;
+$yellow: #ffed4a;
+$green: #38c172;
+$teal: #4dc0b5;
+$cyan: #6cb2eb;
+**/
+
+// Custom Bootstrap variable overrides go first
+$grid-breakpoints: (
+  xs: 0,
+  sm: 480px,
+  md: 640px,
+  lg: 992px,
+  xl: 1300px
+);
+$enable-rounded: true;
+$font-size-base: 1rem;
+$btn-border-radius: 1.5rem;            
+$btn-border-radius-lg: 1.5rem;
+$btn-border-radius-sm: 1.0rem;
+
+//$input-line-height: 2;
+$input-btn-padding-y: 0.345rem;
+$input-btn-padding-x: 1.5rem;
+$input-btn-padding-y-sm: .1rem;
+$input-btn-padding-x-sm: 1.1rem;
+//$input-btn-padding-y-lg:
+$input-btn-padding-x-lg: 1.5rem;
+//$input-btn-font-size-sm
+
+$border-radius: 1rem;
+$border-radius-lg: 1.5rem; 
+$border-radius-sm: 1rem;
+
+$badge-font-size: 75%;
+$badge-border-radius: 0.2rem;
+$badge-font-weight: 500;
+
+$navbar-light-color:   #335f85;
+$navbar-light-hover-color:#335f85;
+$navbar-light-active-color:  #335f85;
+
+$body-bg: #fff;
+$primary: #335f85;
+$secondary: #6658dd;
+$success:#3e9e46;
+$info:#17a2b8;
+$warning: #f0ad4e;
+$danger: #d9534f;
+$light: #f8f9fa;
+$dark: #343a40;
