@@ -6,7 +6,7 @@
                     <div class="card-header">Example Component</div>
 
                     <div class="card-body">
-                        I'm an example component.
+                       {{ip}} I'm an example component. 
                     </div>
                 </div>
             </div>
@@ -24,8 +24,14 @@
 ).then((response) => {
        console.log('Component new axios.')
     console.log(response);
+    this.ip = response.data.hello;
     return Promise.resolve();
 });
+        },
+        data() {
+            return {
+                ip: '',
+            }
         }
     }
 </script>
