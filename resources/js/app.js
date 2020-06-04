@@ -19,6 +19,15 @@ window.Vue = require('vue');
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
+//support vuex
+import Vuex from 'vuex'
+Vue.use(Vuex)
+import storeData from "./store/index"
+
+const store = new Vuex.Store(
+    storeData
+)
+
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 
 /**
@@ -29,23 +38,6 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 
 const app = new Vue({
     el: '#app',
+    store,
 });
 
-const BASE_API_URL = 'http://www.mocky.io/';
-const API_IP_ENDPOINT = "v2/5ed7144932000035002744d0";
-
-const API = axios.create({
-    baseURL: String(BASE_API_URL),
-    timeout: 30000,
-    headers: {
-        "Content-Type": "application/json"
-    }
-});
-
-API.get(
-    API_IP_ENDPOINT
-).then((response) => {
- 
-    console.log(response);
-    return Promise.resolve();
-});

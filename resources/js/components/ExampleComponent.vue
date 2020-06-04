@@ -6,7 +6,7 @@
                     <div class="card-header">Example Component</div>
 
                     <div class="card-body">
-                       {{ip}} I'm an example component. 
+                       {{getAllCategory}} I'm an example component. 
                     </div>
                 </div>
             </div>
@@ -18,20 +18,19 @@
     export default {
         //php phpDocumentor.phar -d . -t docs/api
         mounted() {
-            console.log('Component started.')
-            axios.get(
-    'http://www.mocky.io/v2/5ed7144932000035002744d0'
-).then((response) => {
-       console.log('Component new axios.')
-    console.log(response);
-    this.ip = response.data.hello;
-    return Promise.resolve();
-});
+            this.$store.dispatch("allCategoryFromDatabase")
+            console.log('Component started from vuex.')
+
         },
         data() {
             return {
                 ip: '',
             }
+        },
+        computed: {
+        getAllCategory(){ //final output from here
+            return this.$store.getters.getCategoryFormGetters
         }
+      },
     }
 </script>
