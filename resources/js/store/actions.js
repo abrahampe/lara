@@ -2,7 +2,7 @@ import Vue from 'vue';
 import * as typos from './mutation-types';
 
 import axios from "axios";
-const BASE_API_URL = "http://www.mocky.io/";
+const BASE_API_URL = process.env.MIX_BASE_API_URL;
 
 const API = axios.create({
     baseURL: String(BASE_API_URL),
