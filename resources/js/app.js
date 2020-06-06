@@ -5,6 +5,9 @@
  */
 
 require('./bootstrap');
+import BootstrapVue from 'bootstrap-vue' //Importing
+
+
 
 window.Vue = require('vue');
 
@@ -27,6 +30,8 @@ import storeData from "./store/index"
 const store = new Vuex.Store(
     storeData
 ) */
+
+Vue.use(BootstrapVue) // Telling Vue to use this in whole application
 import store from './store/store';
 
 Vue.component('example-component', require('./components/molecules/ExampleComponent.vue').default);

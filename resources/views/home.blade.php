@@ -16,7 +16,8 @@
 
                     You are logged in!
                 </div>
-                  <example-component></example-component>
+                  <example-component class="mb-5"></example-component>
+                 
             </div>
         </div>
     </div>
