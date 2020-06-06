@@ -8,6 +8,8 @@
               <at-loader :loading="globalLoading"></at-loader>
               <strong>{{hello.hello}}</strong>
               </div>
+              <hr>
+              <notification-test></notification-test>
         </div>
       </div>
     </div>
@@ -17,11 +19,13 @@
 <script>
 import { mapState, mapActions } from "vuex";
 import AtLoader from "../atoms/AtLoader.vue";
+import NotificationTest from "../molecules/NotificationTest.vue";
 export default {
   //php phpDocumentor.phar -d . -t docs/api
   name: "ExampleComponent",
   components: {
     AtLoader,
+    NotificationTest,
   },
   mounted() {
    this.getHello();
