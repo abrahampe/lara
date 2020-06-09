@@ -7,6 +7,7 @@
           <div class="card-body">
               <at-loader :loading="globalLoading"></at-loader>
               <strong>{{hello.hello}}</strong>
+              <strong>{{ $t('validation.accepted', {attribute: 'test'}) }}</strong>
               </div>
               <hr>
               <notification-test></notification-test>

@@ -36,14 +36,27 @@ import store from './store/store';
 
 Vue.component('example-component', require('./components/molecules/ExampleComponent.vue').default);
 
+import VueInternationalization from 'vue-i18n';
+import Locale from './vue-i18n-locales.generated';
+
+Vue.use(VueInternationalization);
+const lang = localStorage.getItem('locale') || 'pt';
+
+const i18n = new VueInternationalization({
+    locale: lang,
+    messages: Locale
+});
+
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
-
+ 
 const app = new Vue({
     el: '#app',
+    i18n, 
     store,
 });
 
