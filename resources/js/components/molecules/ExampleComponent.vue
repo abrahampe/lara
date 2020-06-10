@@ -12,6 +12,7 @@
               <hr>
               <notification-test></notification-test>
               <at-switcher v-model="darkTheme" size="lg" id="chk_color"></at-switcher>
+              <mo-theme-selector></mo-theme-selector>
         </div>
       </div>
     </div>
@@ -22,6 +23,7 @@
 import { mapState, mapActions } from "vuex";
 import AtLoader from "../atoms/AtLoader.vue";
 import AtSwitcher from "../atoms/AtSwitcher.vue";
+import MoThemeSelector from "../molecules/MoThemeSelector.vue";
 import NotificationTest from "../molecules/NotificationTest.vue";
 export default {
   //php phpDocumentor.phar -d . -t docs/api
@@ -29,6 +31,7 @@ export default {
   components: {
     AtLoader,
     AtSwitcher,
+    MoThemeSelector,
     NotificationTest,
   },
   mounted() {
