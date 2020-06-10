@@ -2099,9 +2099,21 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 var ThemeHelper = function ThemeHelper() {
   var preloadTheme = function preloadTheme(href) {
-    var link = document.createElement('link');
+    var link = document.createElement("link");
     link.rel = "stylesheet";
     link.href = href;
     document.head.appendChild(link);
@@ -2161,8 +2173,18 @@ var themes = {
         solar: "https://bootswatch.com/4/solar/bootstrap.min.css"
       },
       themeHelper: new ThemeHelper(),
+      selectedTheme: "material",
       loading: true
     };
+  },
+  watch: {
+    'themeHelper': {
+      handler: function handler(val, oldVal) {
+        this.selectedTheme = val.theme;
+        console.log('watch 1', 'newval: ', val, '   oldVal:', oldVal);
+      },
+      deep: true
+    }
   },
   created: function created() {
     var _this = this;
@@ -2174,7 +2196,7 @@ var themes = {
     Promise.all(added).then(function (sheets) {
       console.log("".concat(sheets.length, " themes loaded"));
       _this.loading = false;
-      _this.themeHelper.theme = "flatly";
+      _this.themeHelper.theme = "materia";
     });
   }
 });
@@ -83434,37 +83456,40 @@ var render = function() {
       _c(
         "b-button",
         {
+          attrs: { pressed: _vm.selectedTheme == "materia" },
           on: {
             click: function($event) {
               _vm.themeHelper.theme = "materia"
             }
           }
         },
-        [_vm._v("Edit")]
+        [_vm._v("Tema 1\n    ")]
       ),
       _vm._v(" "),
       _c(
         "b-button",
         {
+          attrs: { pressed: _vm.selectedTheme == "flatly" },
           on: {
             click: function($event) {
               _vm.themeHelper.theme = "flatly"
             }
           }
         },
-        [_vm._v("Undo")]
+        [_vm._v("Tema 2\n    ")]
       ),
       _vm._v(" "),
       _c(
         "b-button",
         {
+          attrs: { pressed: _vm.selectedTheme == "solar" },
           on: {
             click: function($event) {
               _vm.themeHelper.theme = "solar"
             }
           }
         },
-        [_vm._v("Redo")]
+        [_vm._v("Tema 3\n    ")]
       )
     ],
     1
@@ -97879,8 +97904,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\projetos\laravel\full\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\projetos\laravel\full\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Users/abraaobarros/Projetos/laravel/lara/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Users/abraaobarros/Projetos/laravel/lara/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
