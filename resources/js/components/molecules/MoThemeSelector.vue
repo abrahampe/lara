@@ -5,7 +5,7 @@
             @click="themeHelper.theme = 'materia'"
             >Tema 1
         </b-button>
-        <b-button
+        <b-button 
             :pressed="selectedTheme == 'flatly'"
             @click="themeHelper.theme = 'flatly'"
             >Tema 2
@@ -57,33 +57,34 @@ const ThemeHelper = function() {
         }
     };
 };
-const themes = {
-    flatly: "https://bootswatch.com/4/flatly/bootstrap.min.css",
-    materia: "https://bootswatch.com/4/materia/bootstrap.min.css",
-    solar: "https://bootswatch.com/4/solar/bootstrap.min.css"
-};
 
 export default {
+    props: {
+        temas: {
+            type: Object,
+            default: function() {
+                return { default: "css/app.css" };
+            }
+        }
+    },
     data() {
         return {
             themes: {
-                flatly: "https://bootswatch.com/4/flatly/bootstrap.min.css",
-                materia: "https://bootswatch.com/4/materia/bootstrap.min.css",
-                solar: "https://bootswatch.com/4/solar/bootstrap.min.css"
+                default: "css/app.css",
+                ... this.temas,
             },
             themeHelper: new ThemeHelper(),
-            selectedTheme: "material",
+            selectedTheme: "default",
             loading: true
         };
     },
     watch: {
-         'themeHelper': {
-        handler: function (val, oldVal) {
-          this.selectedTheme = val.theme;
-            console.log('watch 1', 'newval: ', val, '   oldVal:', oldVal)
-        },
-        deep: true
-    }
+        themeHelper: {
+            handler: function(val, oldVal) {
+                this.selectedTheme = val.theme;
+            },
+            deep: true
+        }
     },
     created() {
         // add/load themes
@@ -94,7 +95,7 @@ export default {
         Promise.all(added).then(sheets => {
             console.log(`${sheets.length} themes loaded`);
             this.loading = false;
-            this.themeHelper.theme = "materia";
+            this.themeHelper.theme = "default";
         });
     }
 };
