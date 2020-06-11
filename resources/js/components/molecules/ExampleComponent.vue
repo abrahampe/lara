@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
-                <div class="card">
+                <div class="card  px-3">
                     <div class="card-header">Example Component</div>
                     <div class="card-body">
                         <at-loader :loading="globalLoading"></at-loader>
@@ -14,6 +14,8 @@
                     <hr />
                     <notification-test></notification-test>
                     <mo-theme-selector
+                    variant="primary"
+                     class="my-3"
                         :temas="temas"
                     ></mo-theme-selector>
                 </div>
