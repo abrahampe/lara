@@ -2021,6 +2021,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
 
 
 
@@ -2043,11 +2044,10 @@ var temas = {
   },
   data: function data() {
     return {
-      ip: "",
-      temas: temas
+      ip: ""
     };
   },
-  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])(["globalLoading", "hello"])),
+  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])(["globalLoading", "hello", "globalThemes"])),
   methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])({
     getHello: "getHello"
   }))
@@ -83390,9 +83390,13 @@ var render = function() {
             _vm._v(" "),
             _c("notification-test"),
             _vm._v(" "),
+            _c("h5", { staticClass: "mute mb-0 pb-1" }, [
+              _vm._v("Choose a theme below")
+            ]),
+            _vm._v(" "),
             _c("mo-theme-selector", {
-              staticClass: "my-3",
-              attrs: { variant: "primary", temas: _vm.temas }
+              staticClass: "mb-3",
+              attrs: { variant: "primary", temas: _vm.globalThemes }
             })
           ],
           1
@@ -97452,7 +97456,12 @@ var initialState = function initialState() {
     globalLoading: false,
     user: {},
     hello: '',
-    error: ''
+    error: '',
+    globalThemes: {
+      flatly: "https://bootswatch.com/4/flatly/bootstrap.min.css",
+      materia: "https://bootswatch.com/4/materia/bootstrap.min.css",
+      solar: "https://bootswatch.com/4/solar/bootstrap.min.css"
+    }
   };
 };
 

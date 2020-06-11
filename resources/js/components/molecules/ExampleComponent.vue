@@ -13,10 +13,11 @@
                     </div>
                     <hr />
                     <notification-test></notification-test>
+                    <h5 class="mute mb-0 pb-1">Choose a theme below</h5>
                     <mo-theme-selector
                     variant="primary"
-                     class="my-3"
-                        :temas="temas"
+                     class="mb-3"
+                        :temas="globalThemes"
                     ></mo-theme-selector>
                 </div>
             </div>
@@ -48,11 +49,10 @@ export default {
     data() {
         return {
             ip: "",
-            temas: temas,
         };
     },
     computed: {
-        ...mapState(["globalLoading", "hello"])
+        ...mapState(["globalLoading", "hello", "globalThemes"])
     },
     methods: {
         ...mapActions({
