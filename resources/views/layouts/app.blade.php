@@ -17,7 +17,7 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-default shadow-sm">
+    <nav class="navbar navbar-expand-md navbar-light  shadow-sm fixed-top bg-light">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
@@ -29,16 +29,16 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('about') }}">{{ __('About') }} </a>
+                            </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
                         @guest
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }} </a>
-                            </li>
+
                             @if (Route::has('register'))
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
@@ -46,7 +46,7 @@
                             @endif
                         @else
                             <li class="nav-item dropdown">
-                            <a id="navbarDropdown" href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a id="navbarDropdown" href="#" class="py-0 nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 
                             <b-avatar size="50" src="/img/foto.jpg"></b-avatar>
                             </a>
@@ -73,6 +73,8 @@
                 </div>
             </div>
         </nav>
+
+        
 
         <main class="py-4">
             @yield('content')
