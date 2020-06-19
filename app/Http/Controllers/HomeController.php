@@ -26,6 +26,11 @@ class HomeController extends Controller
     {
         return view('about');
     }
+
+    public function settings()
+    {
+        return view('settings');
+    }
     /**
      * Show the application dashboard.
      *

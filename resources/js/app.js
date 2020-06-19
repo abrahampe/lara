@@ -35,6 +35,7 @@ Vue.use(BootstrapVue) // Telling Vue to use this in whole application
 import store from './store/store';
 
 Vue.component('example-component', require('./components/molecules/ExampleComponent.vue').default);
+Vue.component('pg-settings', require('./components/screens/PgSettings.vue').default);
 
 import VueInternationalization from 'vue-i18n';
 import Locale from './vue-i18n-locales.generated';
