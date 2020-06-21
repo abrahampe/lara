@@ -12,6 +12,7 @@
                         }}</strong>
                     </div>
                     <hr />
+                    <mo-list-item></mo-list-item>
                     <notification-test></notification-test>
                     <h5 class="mute mb-0 pb-1">Choose a theme below</h5>
                     <mo-theme-selector
@@ -29,6 +30,7 @@
 import { mapState, mapActions } from "vuex";
 import AtLoader from "../atoms/AtLoader.vue";
 import MoThemeSelector from "../molecules/MoThemeSelector.vue";
+import MoListItem from "../molecules/MoListItem.vue";
 import NotificationTest from "../molecules/NotificationTest.vue";
 const temas = {
     flatly: "https://bootswatch.com/4/flatly/bootstrap.min.css",
@@ -41,6 +43,7 @@ export default {
     components: {
         AtLoader,
         MoThemeSelector,
+        MoListItem,
         NotificationTest
     },
     mounted() {

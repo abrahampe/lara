@@ -1,6 +1,7 @@
 <template>
     <div class="container mt-5 pt-5">
 <at-loader :loading="true"></at-loader>
+<mo-list-item></mo-list-item>
     </div>
 </template>
 
