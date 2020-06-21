@@ -13,7 +13,9 @@
           </div>
         </div>
       </div>
-
+<div class="row"><svg class="bi bi-alert-triangle text-success" width="32" height="32" viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+  ...
+</svg></div>
       <div class="row">
         <div class="col-sm-8">
           <p class="bs-component">
