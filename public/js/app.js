@@ -2088,6 +2088,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
+  methods: {
+    itemClick: function itemClick(index) {
+      console.log(index);
+      this.$emit('itemClick', index);
+    }
+  },
   data: function data() {
     return {
       itemList: [{
@@ -2095,15 +2101,15 @@ __webpack_require__.r(__webpack_exports__);
         description: 'Primeiro item',
         active: true
       }, {
-        icon: "fab fa-angellist",
+        icon: "fas fa-camera",
         description: 'Secondo item',
         active: false
       }, {
-        icon: "fab fa-angellist",
+        icon: "fas fa-chart-bar",
         description: 'terceiro item',
         active: false
       }, {
-        icon: "fab fa-angellist",
+        icon: "fas fa-chart-line",
         description: 'Quarto item',
         active: false
       }]
@@ -2334,6 +2340,17 @@ __webpack_require__.r(__webpack_exports__);
   name: "OrSettings",
   components: {
     MoListItem: _molecules_MoListItem_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
+  methods: {
+    selectItem: function selectItem(item) {
+      this.item = item;
+      console.log("Capturado ".concat(this.item));
+    }
+  },
+  data: function data() {
+    return {
+      item: 0
+    };
   }
 });
 
@@ -83575,13 +83592,25 @@ var render = function() {
         "button",
         {
           key: index,
-          staticClass: "list-group-item list-group-item-action",
+          staticClass:
+            "list-group-item list-group-item-action  d-flex justify-content-between align-items-center",
           class: item.active ? "active" : "",
-          attrs: { type: "button" }
+          attrs: { type: "button" },
+          on: {
+            click: function($event) {
+              return _vm.itemClick(index)
+            }
+          }
         },
         [
-          _c("i", { staticClass: "fa-fw", class: item.icon }),
-          _vm._v("Teste " + _vm._s(item.description) + "\n    ")
+          _c("span", [
+            _c("i", { staticClass: "fa-fw", class: item.icon }),
+            _vm._v(" " + _vm._s(item.description) + "\n         ")
+          ]),
+          _vm._v(" "),
+          _c("span", { staticClass: "badge badge-default badge-pill" }, [
+            _vm._v(">")
+          ])
         ]
       )
     }),
@@ -83784,12 +83813,24 @@ var render = function() {
   return _c("div", { staticClass: "row" }, [
     _c(
       "div",
-      { staticClass: "col-4" },
-      [_c("MoListItem", [_vm._v("Teste")])],
+      { staticClass: "col-md-4" },
+      [
+        _c(
+          "MoListItem",
+          {
+            on: {
+              itemClick: function($event) {
+                return _vm.selectItem($event)
+              }
+            }
+          },
+          [_vm._v("Teste")]
+        )
+      ],
       1
     ),
     _vm._v(" "),
-    _c("div", { staticClass: "col-8" })
+    _c("div", { staticClass: "col-md-8" })
   ])
 }
 var staticRenderFns = []

@@ -1,9 +1,9 @@
 <template>
           <div class="row">
-            <div class="col-4">
-                <MoListItem>Teste</MoListItem>
+            <div class="col-md-4">
+                <MoListItem v-on:itemClick="selectItem($event)">Teste</MoListItem>
             </div>
-            <div class="col-8">
+            <div class="col-md-8">
                 
             </div>
         </div>
@@ -15,6 +15,17 @@ export default {
         name: "OrSettings",
     components: {
         MoListItem,
+    },
+    methods: {
+        selectItem(item) {
+            this.item = item;
+            console.log(`Capturado ${this.item}`);
+        }
+    },
+    data() {
+        return {
+            item: 0
+        }
     },
 }
 </script>
