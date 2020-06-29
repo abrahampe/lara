@@ -1,7 +1,7 @@
 <template>
     <div class="container mt-5 pt-5">
 
-<at-loader :loading="true"></at-loader>
+<at-loader :loading="false"></at-loader>
 <or-settings></or-settings>
     </div>
 </template>
