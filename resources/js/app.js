@@ -31,7 +31,9 @@ const store = new Vuex.Store(
     storeData
 ) */
 
-Vue.use(BootstrapVue) // Telling Vue to use this in whole application
+Vue.use(BootstrapVue); // Telling Vue to use this in whole application
+import VueFontAwesomePicker from "vfa-picker";
+Vue.use(VueFontAwesomePicker);
 import store from './store/store';
 
 Vue.component('example-component', require('./components/molecules/ExampleComponent.vue').default);

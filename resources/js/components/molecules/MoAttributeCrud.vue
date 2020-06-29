@@ -13,7 +13,7 @@
             <option value="2">Two</option>
             <option value="3">Three</option>
           </select>
-
+<at-icon-selector></at-icon-selector>
           <label class="sr-only" for="inlineFormInputName2">Name</label>
           <input
             type="text"
@@ -49,8 +49,12 @@
 </template>
 
 <script>
+import AtIconSelector from "../atoms/AtIconSelector.vue";
 export default {
   name: "MoAttributeCrud",
+    components: {
+    AtIconSelector,
+  },
   props: {
       selectedParent: {
           type: Object,
