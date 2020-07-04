@@ -1,9 +1,12 @@
 <template>
   <div class="card">
     <div class="card">
-      <div class="card-header text-white bg-primary"> <span>
-              <i :class="selectedParent.icon ? selectedParent.icon : defaultInfo.icon" class="fa-fw"></i> {{selectedParent.description ? selectedParent.description : defaultInfo.description }}
-             </span></div>
+      <div class="card-header text-white bg-primary">
+        <span>
+          <i :class="selectedParent.icon ? selectedParent.icon : defaultInfo.icon" class="fa-fw"></i>
+          {{selectedParent.description ? selectedParent.description : defaultInfo.description }}
+        </span>
+      </div>
       <div class="card-body">
         <form class="form-inline">
           <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Tipo</label>
@@ -13,7 +16,7 @@
             <option value="2">Two</option>
             <option value="3">Three</option>
           </select>
-<at-icon-selector></at-icon-selector>
+          <at-icon-selector></at-icon-selector>
           <label class="sr-only" for="inlineFormInputName2">Name</label>
           <input
             type="text"
@@ -52,16 +55,16 @@
 import AtIconSelector from "../atoms/AtIconSelector.vue";
 export default {
   name: "MoAttributeCrud",
-    components: {
-    AtIconSelector,
+  components: {
+    AtIconSelector
   },
   props: {
-      selectedParent: {
-          type: Object,
-      },
-      defaultInfo: {
-          type: Object,
-      },
+    selectedParent: {
+      type: Object
+    },
+    defaultInfo: {
+      type: Object
+    }
   },
   methods: {
     itemClick(index) {

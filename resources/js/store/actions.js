@@ -43,11 +43,12 @@ export default {
     },
     getHello({ commit }) {
         const API_URL_ENDPOINT = "v2/5ed7144932000035002744d0";
-
+        
         commit(typos.SET_LOADING, true);
         API.get(API_URL_ENDPOINT)
             .then(res => {
                 const payload = { ...res.data };
+                console.log(res.data)
 
                 commit(typos.SET_HELLO, payload);
             })
