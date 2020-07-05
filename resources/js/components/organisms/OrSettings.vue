@@ -34,6 +34,8 @@ export default {
     MoItemCrud
   },
   mounted() {
+
+    this.settingsObject = Object.assign({}, this.loadSettings());
     if (this.itemList.length > 0) {
       this.selectedItem = Object.assign({}, this.itemList[0]);
     } else {
@@ -45,9 +47,24 @@ export default {
       console.log(`Capturado ${this.item}`);
     },
     addItem(group) {
-      //this.itemList.push(group);
-      Vue.set(this.settingsObject, "groups", group);
+
+      //console.log(group);
+     // console.log(Object.assign(this.settingsObject.groups, group));
+      //const newGroup = Object.assign({}, this.settingsObject.groups, group);
+      //console.log(newGroup);
+     // Vue.set(this.settingsObject, "groups", group);
       //Object.assign(this.settingsObject, group)
+      const vm = this;
+
+      if(vm.settingsObject.groups){
+                Object.keys(group).forEach(function(key) {
+        Vue.set(vm.settingsObject.groups, key, group[key]);
+      });
+        
+      } else {
+        Vue.set(vm.settingsObject, "groups", group);
+      }
+
     },
     saveSettings() {
       const localSettings = this.loadSettings() ? this.loadSettings() : {};
