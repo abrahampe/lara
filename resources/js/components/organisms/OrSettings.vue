@@ -1,7 +1,10 @@
 <template>
   <div class="row">
+    <div class="col-md-6 offset-md-3">
+      <mo-group-crud :item-list="itemList" @newGroup="addGroup($event)" />
+    </div>
+
     <div class="col-md-4">
-      <mo-group-crud @newGroup="addGroup($event)" />
       <mo-list-item :item-list="itemList" @itemClick="selectItem($event)">Teste</mo-list-item>
     </div>
     <div class="col-md-8">
@@ -32,30 +35,13 @@ export default {
       this.selectedItem = item;
       console.log(`Capturado ${this.item}`);
     },
-    addGroup(group){
+    addGroup(group) {
       this.itemList.push(group);
     }
   },
   data() {
     return {
-      itemList: [
-        {
-          icon: "fab fa-angellist",
-          description: "Primeiro grupo"
-        },
-        {
-          icon: "fas fa-camera",
-          description: "Secondo grupo"
-        },
-        {
-          icon: "fas fa-chart-bar",
-          description: "terceiro grupo"
-        },
-        {
-          icon: "fas fa-chart-line",
-          description: "Quarto grupo"
-        }
-      ],
+      itemList: [],
       selectedItem: {},
       defaultSelected: {
         icon: "fab fa-angellist",
