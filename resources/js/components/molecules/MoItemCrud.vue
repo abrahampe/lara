@@ -120,7 +120,7 @@ export default {
 
         const completeObject = Object.assign({}, vm.finalObject);
         this.$emit("newItem", completeObject);
-        this.newGroup = Object.assign({}, emptyItem);
+        //this.newGroup = Object.assign({}, emptyItem);
       }
 
       if (this.category == "propValue") {
@@ -130,7 +130,7 @@ export default {
 
         const completeObject = Object.assign({}, vm.finalObject);
         this.$emit("newItem", completeObject);
-        this.newGroup = Object.assign({}, emptyItem);
+      //  this.newGroup = Object.assign({}, emptyItem);
       }
     },
     dontAddItem() {

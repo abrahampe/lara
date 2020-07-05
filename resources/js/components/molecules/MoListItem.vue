@@ -23,7 +23,7 @@ export default {
     name: 'MoListItem',
     props: {
       itemList: {
-        type: Array,
+        type: Object,
 
       },
       selected:{
@@ -39,7 +39,7 @@ export default {
   },
     data() {
         return {
-            selectedIndex:  0
+            selectedIndex:  0,
         };
     }
 };

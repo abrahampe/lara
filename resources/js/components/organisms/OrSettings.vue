@@ -1,14 +1,11 @@
 <template>
   <div class="row">
-    <div class="col-md-6">
-      <mo-group-crud :item-list="itemList" @newGroup="addGroup($event)" />
-    </div>
-    <div class="col-md-6">
-      <mo-item-crud  @newItem="addItem($event)" />
+    <div class="col-md-6 offset-md-3">
+      <mo-item-crud @newItem="addItem($event)" />
     </div>
 
     <div class="col-md-4">
-      <mo-list-item :item-list="itemList" @itemClick="selectItem($event)">Teste</mo-list-item>
+      <mo-list-item :item-list="settingsObject.groups" @itemClick="selectItem($event)">Teste</mo-list-item>
     </div>
     <div class="col-md-8">
       <mo-attribute-crud :selected-parent="selectedItem" :default-info="defaultSelected"></mo-attribute-crud>
@@ -41,12 +38,14 @@ export default {
       console.log(`Capturado ${this.item}`);
     },
     addItem(group) {
-      this.itemList.push(group);
+      //this.itemList.push(group);
+      Vue.set(this.settingsObject,  'groups' , group);
+      //Object.assign(this.settingsObject, group)
     }
   },
   data() {
     return {
-      itemList: [],
+      itemList: {},
       settingsObject:{},
       selectedItem: {},
       defaultSelected: {
