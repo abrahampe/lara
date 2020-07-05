@@ -72,7 +72,7 @@
 
     <button
       v-if="!started"
-      class="btn btn-outline-primary text-left btn-block my-3"
+      class="btn btn-outline-primary text-left btn-block mb-3"
       @click="started = true"
     >
       <i class="fa-fw fas fa-plus"></i>

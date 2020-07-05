@@ -1,7 +1,14 @@
 <template>
   <div class="row">
-    <div class="col-md-6 offset-md-3">
+    <div class="col-md-6">
       <mo-item-crud @newItem="addItem($event)" />
+    </div>
+    <div class="col-md-6">
+      <button
+        type="button"
+        @click="saveSettings()"
+        class="btn btn-danger btn-block"
+      >Salvar configurações</button>
     </div>
 
     <div class="col-md-4">
@@ -39,19 +46,31 @@ export default {
     },
     addItem(group) {
       //this.itemList.push(group);
-      Vue.set(this.settingsObject,  'groups' , group);
+      Vue.set(this.settingsObject, "groups", group);
       //Object.assign(this.settingsObject, group)
+    },
+    saveSettings() {
+      const localSettings = this.loadSettings() ? this.loadSettings() : {};
+      const newSettings = Object.assign(localSettings, this.settingsObject);
+      const saveSettings = JSON.stringify(newSettings);
+
+      localStorage.setItem("settings", saveSettings);
+
+    },
+    loadSettings() {
+      const localSettings = JSON.parse(localStorage.getItem("settings"));
+      return localSettings;
     }
   },
   data() {
     return {
       itemList: {},
-      settingsObject:{},
+      settingsObject: {},
       selectedItem: {},
       defaultSelected: {
         icon: "fab fa-angellist",
         description: "Sem grupos de configuração",
-        items:{},
+        items: {}
       }
     };
   }

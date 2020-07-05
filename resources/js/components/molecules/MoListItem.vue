@@ -1,6 +1,6 @@
 <template>
     <div class="list-group">
-      <div v-if="itemList.length == 0" class="list-group-item disabled list-group-item-action text-muted">Sem grupos cadastrados</div>
+      <div v-if="Object.keys(itemList).length === 0" class="list-group-item disabled list-group-item-action text-muted">Sem grupos cadastrados</div>
        <button
         v-for="(item, index) in itemList"
             type="button"
@@ -24,6 +24,10 @@ export default {
     props: {
       itemList: {
         type: Object,
+        default: ()=>{
+          return {};
+
+        }
 
       },
       selected:{
