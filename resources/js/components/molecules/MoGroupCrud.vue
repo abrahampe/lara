@@ -6,7 +6,11 @@
         <div class="form-group">
           <select class="custom-select">
             <option selected="selected">Novo Grupo</option>
-            <option  v-for="item in itemList" :key="item.description" value="1">Filho de {{ item.description }}</option>
+            <option
+              v-for="item in itemList"
+              :key="item.description"
+              value="1"
+            >Filho de {{ item.description }}</option>
           </select>
         </div>
 
@@ -38,6 +42,9 @@
               @click="addGroup()"
             >Confirmar</button>
           </div>
+          <div class="col-12">
+            <button type="button" class="btn btn-block btn-primary mx-auto" @click="addItem()">Teste</button>
+          </div>
         </div>
       </div>
     </div>
@@ -57,7 +64,8 @@
 import AtIconSelector from "../atoms/AtIconSelector.vue";
 const emptyGroup = {
   icon: "fas fa-info",
-  description: ""
+  description: "",
+  items: ""
 };
 export default {
   name: "MoGroupCrud",
@@ -68,23 +76,52 @@ export default {
     itemList: {
       type: Array,
       default: undefined
+    },
+    itemFull: {
+      type: Object,
+      default: undefined
     }
   },
   data() {
     return {
       started: false,
+      groups: {},
       newGroup: {
         icon: "fas fa-info",
-        description: ""
+        description: "",
+        items: ""
       }
     };
   },
   methods: {
     addGroup(group = {}) {
+      const vm = this;
+
       const finalGroup = Object.assign(group, this.newGroup);
+
       this.$emit("newGroup", finalGroup);
       this.newGroup = Object.assign({}, emptyGroup);
-      console.log(this.itemList);
+    },
+    addItem(groupname) {
+      const vm = this;
+      const gn = "themes";
+      const tsn = {
+        icon: "fas fa-info",
+        description: "sfasfasdfa",
+        items: {}
+      };
+   //   const fn = Object.assign({}, vm.groups)
+
+      //const sn = Object.assign(gn, emptyGroup);
+      
+      Vue.set(vm.groups, gn, tsn);
+      const sn = Object.assign(vm.groups, emptyGroup);
+      Object.keys(tsn).forEach(function(key) {
+        Vue.set(vm.groups, key, tsn[key]);
+      });
+      const fn = Object.assign({}, vm.groups)
+      this.$emit("newGroup", fn);
+      this.newGroup = Object.assign({}, emptyGroup);
     },
     dontAddGroup() {
       this.newGroup = Object.assign({}, emptyGroup);
