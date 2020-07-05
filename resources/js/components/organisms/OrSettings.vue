@@ -1,7 +1,10 @@
 <template>
   <div class="row">
-    <div class="col-md-6 offset-md-3">
+    <div class="col-md-6">
       <mo-group-crud :item-list="itemList" @newGroup="addGroup($event)" />
+    </div>
+    <div class="col-md-6">
+      <mo-item-crud  @newItem="addItem($event)" />
     </div>
 
     <div class="col-md-4">
@@ -17,12 +20,14 @@
 import MoListItem from "../molecules/MoListItem.vue";
 import MoAttributeCrud from "../molecules/MoAttributeCrud.vue";
 import MoGroupCrud from "../molecules/MoGroupCrud.vue";
+import MoItemCrud from "../molecules/MoItemCrud.vue";
 export default {
   name: "OrSettings",
   components: {
     MoListItem,
     MoAttributeCrud,
-    MoGroupCrud
+    MoGroupCrud,
+    MoItemCrud
   },
   mounted() {
     if (this.itemList.length > 0) {
@@ -35,17 +40,19 @@ export default {
       this.selectedItem = item;
       console.log(`Capturado ${this.item}`);
     },
-    addGroup(group) {
+    addItem(group) {
       this.itemList.push(group);
     }
   },
   data() {
     return {
       itemList: [],
+      settingsObject:{},
       selectedItem: {},
       defaultSelected: {
         icon: "fab fa-angellist",
-        description: "Sem grupos de configuração"
+        description: "Sem grupos de configuração",
+        items:{},
       }
     };
   }

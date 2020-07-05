@@ -86,6 +86,10 @@ export default {
     return {
       started: false,
       groups: {},
+      baseItem: {
+        icon: "fas fa-info",
+        description: "Teste de t",
+      },
       newGroup: {
         icon: "fas fa-info",
         description: "",
@@ -96,32 +100,38 @@ export default {
   methods: {
     addGroup(group = {}) {
       const vm = this;
-
       const finalGroup = Object.assign(group, this.newGroup);
 
       this.$emit("newGroup", finalGroup);
       this.newGroup = Object.assign({}, emptyGroup);
     },
-    addItem(groupname) {
+    addItem(category) {
       const vm = this;
-      const gn = "themes";
-      const tsn = {
-        icon: "fas fa-info",
-        description: "sfasfasdfa",
-        items: {}
-      };
-   //   const fn = Object.assign({}, vm.groups)
+      const groupProperty = { items: {}};
+
+      if (category == "groups") {
+        const parentAttribute = "themes";
+        const childAttribute = Object.assign(groupProperty, groups); 
+        Vue.set(vm.groups, parentAttribute, childAttribute);
+
+        const completeGroup = Object.assign({}, vm.groups);
+        this.$emit("newGroup", completeGroup);
+        this.newGroup = Object.assign({}, emptyGroup);
+        
+      }
+
+      //   const fn = Object.assign({}, vm.groups)
 
       //const sn = Object.assign(gn, emptyGroup);
-      
+/* 
       Vue.set(vm.groups, gn, tsn);
       const sn = Object.assign(vm.groups, emptyGroup);
       Object.keys(tsn).forEach(function(key) {
         Vue.set(vm.groups, key, tsn[key]);
       });
-      const fn = Object.assign({}, vm.groups)
+      const fn = Object.assign({}, vm.groups);
       this.$emit("newGroup", fn);
-      this.newGroup = Object.assign({}, emptyGroup);
+      this.newGroup = Object.assign({}, emptyGroup); */
     },
     dontAddGroup() {
       this.newGroup = Object.assign({}, emptyGroup);
