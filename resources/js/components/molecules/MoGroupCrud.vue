@@ -77,10 +77,6 @@ export default {
       type: Array,
       default: undefined
     },
-    itemFull: {
-      type: Object,
-      default: undefined
-    }
   },
   data() {
     return {

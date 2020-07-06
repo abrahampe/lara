@@ -12,6 +12,18 @@
           </select>
         </div>
 
+        <div v-if="hasParentItem" class="form-group">
+          <small>Item pai</small>
+          <select class="custom-select">
+            <option value="groups" selected="selected">Configuração</option>
+            <option
+              v-for="item in itemFull.groups"
+              :key="item.slug"
+              :value="item.slug"
+            >{{ item.description }}</option>
+          </select>
+        </div>
+
         <form class="form-inline mt-3">
           <div v-if="allowIconSelector" class="form-group">
             <div class="custom-control custom-switch">
@@ -72,7 +84,7 @@
 
     <button
       v-if="!started"
-      class="btn btn-outline-primary text-left btn-block mb-3"
+      class="btn btn-primary text-left btn-block mb-3"
       @click="started = true"
     >
       <i class="fa-fw fas fa-plus"></i>
@@ -100,6 +112,7 @@ export default {
       started: false,
       showIconSelector: false,
       allowIconSelector: false,
+      hasParentItem: false,
 
       category: "",
       icon: "fas fa-info",
@@ -112,9 +125,9 @@ export default {
     addItem() {
       const vm = this;
       const metadata = {
-        icon: this.icon,
+        icon: this.showIconSelector ? this.icon : null,
         description: this.description
-      }
+      };
       if (this.category == "group") {
         Vue.set(vm.finalObject, vm.slug, metadata);
 
@@ -130,7 +143,7 @@ export default {
 
         const completeObject = Object.assign({}, vm.finalObject);
         this.$emit("newItem", completeObject);
-      //  this.newGroup = Object.assign({}, emptyItem);
+        //  this.newGroup = Object.assign({}, emptyItem);
       }
     },
     dontAddItem() {
@@ -141,15 +154,23 @@ export default {
       this.icon = icon;
     },
     adjustForm() {
+      const vm = this;
+      Object.keys(vm.itemFull).forEach(function(key) {
+        console.log(key, vm.itemFull[key]);
+      });
+
       if (this.category == "group") {
         this.showIconSelector = false;
         this.allowIconSelector = true;
+        this.hasParentItem = false;
       } else if (this.category == "propValue") {
         this.showIconSelector = false;
         this.allowIconSelector = false;
+        this.hasParentItem = true;
       } else if (this.category == "propObject") {
         this.showIconSelector = false;
         this.allowIconSelector = true;
+        this.hasParentItem = true;
       }
     }
   }
