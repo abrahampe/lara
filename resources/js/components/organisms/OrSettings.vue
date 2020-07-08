@@ -1,14 +1,15 @@
 <template>
   <div class="row">
     <div class="col-md-12">
-      <div class="card bg-dark mb-4">
-        <div class="card-header text-white ">Administração das configurações</div>
+      <div class="card  mb-4">
+        <div class="card-header bg-dark text-white ">Administração das configurações</div>
         <div class="card-body">
           <div class="row">
             <div class="col-md-6">
               <mo-item-crud :item-full="settingsObject" @newItem="addItem($event)" />
             </div>
             <div class="col-md-6">
+              <mo-tree/>
               <button
                 type="button"
                 @click="saveSettings()"
@@ -34,13 +35,15 @@ import MoListItem from "../molecules/MoListItem.vue";
 import MoAttributeCrud from "../molecules/MoAttributeCrud.vue";
 import MoGroupCrud from "../molecules/MoGroupCrud.vue";
 import MoItemCrud from "../molecules/MoItemCrud.vue";
+import MoTree from "../molecules/MoTree.vue";
 export default {
   name: "OrSettings",
   components: {
     MoListItem,
     MoAttributeCrud,
     MoGroupCrud,
-    MoItemCrud
+    MoItemCrud,
+    MoTree
   },
   mounted() {
     this.settingsObject = Object.assign({}, this.loadSettings());
