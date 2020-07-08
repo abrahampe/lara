@@ -9,7 +9,17 @@
               <mo-item-crud :item-full="settingsObject" @newItem="addItem($event)" />
             </div>
             <div class="col-md-6">
-              <vue-json-pretty :path="'res'" :data="settingsObject" @click="treeClick"></vue-json-pretty>
+              <vue-json-pretty 
+              :path="'res'" 
+              :data="settingsObject" 
+              :path-selectable="((path, data) => typeof data !== 'number')"
+              @click="treeClick"
+              show-select-controller
+              highlightMouseoverNode 
+              highlightSelectedNode 
+              selectableType="single"
+              v-model="selectedAdmItem"
+              ></vue-json-pretty>
               <button
                 type="button"
                 @click="saveSettings()"
@@ -89,13 +99,13 @@ export default {
     },
     treeClick(path, data){
       console.log(path);
-      Vue.delete()
     }
   },
   data() {
     return {
       itemList: {},
       settingsObject: {},
+      selectedAdmItem: null,
       selectedItem: {},
       defaultSelected: {
         icon: "fab fa-angellist",
