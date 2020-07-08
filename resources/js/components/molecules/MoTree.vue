@@ -33,9 +33,22 @@ export default {
   components: {
     AtTreeItem
   },
+
+
+
+props: {
+    dataIn: {
+        type: Object,
+        default: () =>{
+            treeData;
+        }
+
+    },
+},
+
   data() {
     return {
-      treeData: treeData
+      treeData: this.dataIn ? this.dataIn : treeData,
     };
   },
   methods: {

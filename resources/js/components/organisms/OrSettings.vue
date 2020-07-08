@@ -1,15 +1,15 @@
 <template>
   <div class="row">
     <div class="col-md-12">
-      <div class="card  mb-4">
-        <div class="card-header bg-dark text-white ">Administração das configurações</div>
+      <div class="card mb-4">
+        <div class="card-header bg-dark text-white">Administração das configurações</div>
         <div class="card-body">
           <div class="row">
             <div class="col-md-6">
               <mo-item-crud :item-full="settingsObject" @newItem="addItem($event)" />
             </div>
             <div class="col-md-6">
-              <mo-tree/>
+              <vue-json-pretty :path="'res'" :data="settingsObject" @click="treeClick"></vue-json-pretty>
               <button
                 type="button"
                 @click="saveSettings()"
@@ -20,7 +20,9 @@
         </div>
       </div>
     </div>
-
+    <div class="col-md-12">
+      <hr />
+    </div>
     <div class="col-md-4">
       <mo-list-item :item-list="settingsObject.groups" @itemClick="selectItem($event)">Teste</mo-list-item>
     </div>
@@ -35,7 +37,7 @@ import MoListItem from "../molecules/MoListItem.vue";
 import MoAttributeCrud from "../molecules/MoAttributeCrud.vue";
 import MoGroupCrud from "../molecules/MoGroupCrud.vue";
 import MoItemCrud from "../molecules/MoItemCrud.vue";
-import MoTree from "../molecules/MoTree.vue";
+import VueJsonPretty from "vue-json-pretty";
 export default {
   name: "OrSettings",
   components: {
@@ -43,7 +45,7 @@ export default {
     MoAttributeCrud,
     MoGroupCrud,
     MoItemCrud,
-    MoTree
+    VueJsonPretty
   },
   mounted() {
     this.settingsObject = Object.assign({}, this.loadSettings());
@@ -84,6 +86,10 @@ export default {
     loadSettings() {
       const localSettings = JSON.parse(localStorage.getItem("settings"));
       return localSettings;
+    },
+    treeClick(path, data){
+      console.log(path);
+      Vue.delete()
     }
   },
   data() {
