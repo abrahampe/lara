@@ -88,7 +88,7 @@
       @click="started = true"
     >
       <i class="fa-fw fas fa-plus"></i>
-      Adicionar Objeto NV
+      Adicionar item
     </button>
   </div>
 </template>
