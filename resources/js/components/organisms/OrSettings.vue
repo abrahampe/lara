@@ -72,8 +72,8 @@
                     </div>
                   </div>
                 </div>
-                <div class="card-footer text-muted">
-                  <div class="row text-center" v-if="editMode">
+                <div class="card-footer text-muted" v-if="editMode">
+                  <div class="row text-center">
                     <div class="col-6">
                       <button
                         type="button"
@@ -90,6 +90,15 @@
                   </div>
                 </div>
               </div>
+
+              <button
+                v-if="true"
+                class="btn btn-danger text-left btn-block mt-3"
+                @click="removeSettings()"
+              >
+                <i class="fa-fw fas fa-trash"></i>
+                Remover item
+              </button>
             </div>
           </div>
           <div class="row">
@@ -148,12 +157,6 @@ export default {
       console.log(`Capturado ${this.item}`);
     },
     addItem(group) {
-      //console.log(group);
-      // console.log(Object.assign(this.settingsObject.groups, group));
-      //const newGroup = Object.assign({}, this.settingsObject.groups, group);
-      //console.log(newGroup);
-      // Vue.set(this.settingsObject, "groups", group);
-      //Object.assign(this.settingsObject, group)
       const vm = this;
 
       if (vm.settingsObject.groups) {
@@ -171,34 +174,44 @@ export default {
 
       localStorage.setItem("settings", saveSettings);
     },
-    setValue(path, value) {
-      let obj = this;
-      const parts = path.split(".");
-      while (parts.length > 1 && obj.hasOwnProperty(parts[0])) {
-        obj = obj[parts.shift()];
-        
-      }
-      console.log(obj[parts[0]]);
-      obj[parts[0]] = value;
-      
-    },
+
     saveAdmSettings(event) {
       const key = this.selectedAdmPath.replace("settingsJSON.", "");
-      //console.log(key);
-      //this.setValue(key, this.newSelectedAdmData);
-      _.set(this.settingsObject, key, this.newSelectedAdmData)
-      //const vm = this;
-      //this.settingsObject.$set(key, this.newSelectedAdmData)
-      //console.log(vm.settingsObject.$set(key, this.newSelectedAdmData));
 
-      //Vue.set(this.settingsObject, key, this.newSelectedAdmData);
+      _.set(this.settingsObject, key, this.newSelectedAdmData);
     },
     dontSaveAdmSettings() {
       this.editMode = false;
       this.newSelectedAdmData = null;
     },
+    removeSettings() {
+      const key = this.selectedAdmPath.replace("settingsJSON.", "");
+
+      this.$bvModal
+        .msgBoxConfirm("Tem certeza que deseja prosseguir?")
+        .then(value => {
+          if (value) {
+            _.unset(this.settingsObject, key);
+            this.$forceUpdate();
+          }
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    },
     propertyChange() {
       this.editMode = true;
+    },
+    confirmModal() {
+      this.confirmed = false;
+      this.$bvModal
+        .msgBoxConfirm("Tem certeza que deseja prosseguir?")
+        .then(value => {
+          this.confirmed = value;
+        })
+        .catch(err => {
+          this.confirmed = false;
+        });
     },
     loadSettings() {
       const localSettings = JSON.parse(localStorage.getItem("settings"));
@@ -227,6 +240,7 @@ export default {
       selectedAdmPath: null,
       newSelectedAdmData: null,
       editMode: false,
+      confirmed: false,
       selectedItem: {},
       defaultSelected: {
         icon: "fab fa-angellist",
