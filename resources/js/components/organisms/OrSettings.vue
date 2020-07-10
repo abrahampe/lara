@@ -156,9 +156,11 @@ export default {
       this.selectedItem = item;
       console.log(`Capturado ${this.item}`);
     },
-    addItem(group) {
+    addItem(payload) {
       const vm = this;
-
+      const group = payload[0];
+      const category = payload[1];
+console.log(payload);
       if (vm.settingsObject.groups) {
         Object.keys(group).forEach(function(key) {
           Vue.set(vm.settingsObject.groups, key, group[key]);

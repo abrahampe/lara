@@ -132,8 +132,8 @@ export default {
         Vue.set(vm.finalObject, vm.slug, metadata);
 
         const completeObject = Object.assign({}, vm.finalObject);
-        this.$emit("newItem", completeObject);
-        //this.newGroup = Object.assign({}, emptyItem);
+        this.$emit("newItem", [completeObject, vm.category]);
+
       }
 
       if (this.category == "propValue") {
@@ -154,10 +154,8 @@ export default {
       this.icon = icon;
     },
     adjustForm() {
-      const vm = this;
-      Object.keys(vm.itemFull).forEach(function(key) {
-        console.log(key, vm.itemFull[key]);
-      });
+
+
 
       if (this.category == "group") {
         this.showIconSelector = false;
