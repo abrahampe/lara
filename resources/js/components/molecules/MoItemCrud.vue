@@ -120,9 +120,13 @@ export default {
       const vm = this;
       const metadata = {
         icon: this.showIconSelector ? this.icon : null,
-        description: this.description
+        description: this.description,
       };
+
+
+
       if (this.category == "group") {
+        Vue.set(metadata, 'items', {});
         Vue.set(vm.finalObject, vm.slug, metadata);
 
         const completeObject = Object.assign({}, vm.finalObject);
@@ -131,7 +135,7 @@ export default {
       }
 
       if (this.category == "propValue") {
-
+        Vue.set(metadata, 'valor', '');
         Vue.set(vm.finalObject, vm.slug, metadata);
 
         const completeObject = Object.assign({}, vm.finalObject);

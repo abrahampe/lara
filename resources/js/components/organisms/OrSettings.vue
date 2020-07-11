@@ -177,13 +177,11 @@ export default {
         }
       } else if (category === "propValue") {
         const key = this.selectedAdmPath.replace("settingsJSON.", "");
-        console.log(`${key}${item[0].slug}`);
-        const newItem = Object.assign({}, item[0])
-
+        //console.log(`${key}${item[0].slug}`);
+        const newItem = Object.assign({}, item);
 
         _.set(this.settingsObject, key, newItem);
       } else if (category === "propObject") {
-
       }
     },
     saveSettings() {
