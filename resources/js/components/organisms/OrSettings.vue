@@ -18,7 +18,11 @@
               ></vue-json-pretty>
             </div>
             <div class="col-md-6">
-              <mo-item-crud :item-full="settingsObject" @newItem="addItem($event)" />
+              <mo-item-crud
+                :selected-item="selectedAdmItem"
+                :item-full="settingsObject"
+                @newItem="addItem($event)"
+              />
 
               <div class="card">
                 <div class="card-header">
@@ -146,9 +150,11 @@ export default {
   },
   mounted() {
     this.settingsObject = Object.assign({}, this.loadSettings());
-    if (this.itemList.length > 0) {
-      this.selectedItem = Object.assign({}, this.itemList[0]);
-    } else {
+    const groups = this.settingsObject.groups;
+    const firstObject = Object.values(groups)[0];
+
+    if (firstObject) {
+      this.selectedItem = Object.assign({}, firstObject);
     }
   },
   methods: {
@@ -158,15 +164,26 @@ export default {
     },
     addItem(payload) {
       const vm = this;
-      const group = payload[0];
       const category = payload[1];
-console.log(payload);
-      if (vm.settingsObject.groups) {
-        Object.keys(group).forEach(function(key) {
-          Vue.set(vm.settingsObject.groups, key, group[key]);
-        });
-      } else {
-        Vue.set(vm.settingsObject, "groups", group);
+      const item = payload[0];
+
+      if (category === "group") {
+        if (vm.settingsObject.groups) {
+          Object.keys(item).forEach(function(key) {
+            Vue.set(vm.settingsObject.groups, key, item[key]);
+          });
+        } else {
+          Vue.set(vm.settingsObject, "groups", item);
+        }
+      } else if (category === "propValue") {
+        const key = this.selectedAdmPath.replace("settingsJSON.", "");
+        console.log(`${key}${item[0].slug}`);
+        const newItem = Object.assign({}, item[0])
+
+
+        _.set(this.settingsObject, key, newItem);
+      } else if (category === "propObject") {
+
       }
     },
     saveSettings() {
