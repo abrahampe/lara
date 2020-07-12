@@ -12,11 +12,9 @@
           </select>
         </div>
 
-<p>
-  {{selectedItem}}
-</p>
-        <form class="form-inline mt-3">
-          <div v-if="allowIconSelector" class="form-group">
+        <p>{{selectedItem}}</p>
+        <form class="form-inline mt-3" v-if="showIconForm">
+          <div class="form-group">
             <div class="custom-control custom-switch">
               <input
                 type="checkbox"
@@ -99,14 +97,14 @@ export default {
     },
     selectedItem: {
       type: String,
-      default: 'groups'
+      default: "groups"
     }
   },
   data() {
     return {
       started: false,
       showIconSelector: false,
-      allowIconSelector: false,
+      showIconForm: false,
 
       category: "",
       icon: "fas fa-info",
@@ -120,22 +118,19 @@ export default {
       const vm = this;
       const metadata = {
         icon: this.showIconSelector ? this.icon : null,
-        description: this.description,
+        description: this.description
       };
 
-
-
       if (this.category == "group") {
-        Vue.set(metadata, 'items', {});
+        Vue.set(metadata, "items", {});
         Vue.set(vm.finalObject, vm.slug, metadata);
 
         const completeObject = Object.assign({}, vm.finalObject);
         this.$emit("newItem", [completeObject, vm.category]);
-
       }
 
       if (this.category == "propValue") {
-        Vue.set(metadata, 'valor', '');
+        Vue.set(metadata, "value", "");
         Vue.set(vm.finalObject, vm.slug, metadata);
 
         const completeObject = Object.assign({}, vm.finalObject);
@@ -143,8 +138,8 @@ export default {
         //  this.newGroup = Object.assign({}, emptyItem);
       }
       if (this.category == "propObject") {
-
-        Vue.set(vm.finalObject, {}, {prop: {}});
+        Vue.set(metadata, "values", {});
+        Vue.set(vm.finalObject, vm.slug, metadata);
 
         const completeObject = Object.assign({}, vm.finalObject);
         this.$emit("newItem", [completeObject, vm.category]);
@@ -159,21 +154,11 @@ export default {
       this.icon = icon;
     },
     adjustForm() {
-
-
-
-      if (this.category == "group") {
+      this.showIconForm = true;
+      if (this.category in ["group", "propValue", "propObject"]) {
+        this.showIconSelector = true;
+      } else {
         this.showIconSelector = false;
-        this.allowIconSelector = true;
-
-      } else if (this.category == "propValue") {
-        this.showIconSelector = false;
-        this.allowIconSelector = false;
-
-      } else if (this.category == "propObject") {
-        this.showIconSelector = false;
-        this.allowIconSelector = true;
-
       }
     }
   }
