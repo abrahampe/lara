@@ -8,6 +8,7 @@
           <select @change="adjustForm()" v-model="category" class="custom-select">
             <option value="group">Grupo</option>
             <option value="propValue">Item Simples</option>
+            <option value="keyValue">Chave-valor</option>
             <option value="propObject">Item Árvore</option>
           </select>
         </div>
@@ -41,7 +42,7 @@
             />
           </div>
         </form>
-        <form class="mt-3">
+        <form v-if="category != 'keyValue'" class="mt-3">
           <div class="form-group">
             <input
               type="text"
@@ -49,6 +50,16 @@
               placeholder="Descrição Amigável do item"
               v-model="description"
             />
+          </div>
+        </form>
+        <form v-if="showDataType" class="mt-3">
+          <div class="form-group">
+            <small>Tipo do dado</small>
+            <select @change="adjustData()" v-model="dataType" class="custom-select">
+              <option value="string">String</option>
+              <option value="number">Número</option>
+              <option value="boolean">Booleano</option>
+            </select>
           </div>
         </form>
         <hr />
@@ -105,7 +116,9 @@ export default {
       started: false,
       showIconSelector: false,
       showIconForm: false,
-
+      showDataType: false,
+      keyValue: undefined,
+      dataType: "",
       category: "",
       icon: "fas fa-info",
       slug: "",
@@ -137,6 +150,12 @@ export default {
         this.$emit("newItem", [completeObject, vm.category]);
         //  this.newGroup = Object.assign({}, emptyItem);
       }
+      if (this.category == "keyValue") {
+        const keyValue = [vm.slug, this.keyValue];
+
+        this.$emit("newItem", [keyValue, vm.category]);
+        //  this.newGroup = Object.assign({}, emptyItem);
+      }
       if (this.category == "propObject") {
         Vue.set(metadata, "values", {});
         Vue.set(vm.finalObject, vm.slug, metadata);
@@ -153,12 +172,40 @@ export default {
     attachIcon(icon) {
       this.icon = icon;
     },
+
+    adjustData() {
+      switch (this.dataType) {
+        case "string":
+          this.keyValue = "";
+          break;
+        case "number":
+          this.keyValue = 0;
+          break;
+        case "boolean":
+          this.keyValue = false;
+          break;
+
+        default: this.keyValue = "";
+          break;
+      }
+
+    },
     adjustForm() {
       this.showIconForm = true;
-      if (this.category in ["group", "propValue", "propObject"]) {
-        this.showIconSelector = true;
+      const checkDataList = ["propValue", "keyValue"];
+      const checkIconList = ["group", "propValue", "propObject"];
+
+      //Controla exibição de ícone
+      if (checkIconList.includes(this.category)) {
+        this.showIconForm = true;
       } else {
-        this.showIconSelector = false;
+        this.showIconForm = false;
+      }
+
+      if (checkDataList.includes(this.category)) {
+        this.showDataType = true;
+      } else {
+        this.showDataType = false;
       }
     }
   }

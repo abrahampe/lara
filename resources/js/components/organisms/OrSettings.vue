@@ -180,6 +180,13 @@ export default {
         const newItem = Object.assign({}, item);
 
         _.set(this.settingsObject, key, newItem);
+      } else if (category === "keyValue") {
+        const key = this.selectedAdmPath.replace("settingsJSON.", "");
+        const chave = payload[0][0];
+        const valor = payload[0][1];
+        Vue.set(vm.selectedAdmData, chave , valor);
+
+      //  _.set(this.settingsObject, key, newItem);
       } else if (category === "propObject") {
         const key = this.selectedAdmPath.replace("settingsJSON.", "");
         const newItem = Object.assign({}, item);
