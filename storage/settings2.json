@@ -7,33 +7,33 @@
                 "selected": {
                     "icon": "fas fa-check-square",
                     "description": "Tema atualmente selecionado",
-                    "value": "https:\/\/bootswatch.com\/4\/materia\/bootstrap.min.css"
+                    "value": "css\/app.css"
                 },
                 "avaliable": {
                     "icon": "fas fa-list",
                     "description": "Temas dispon\u00edveis",
                     "values": {
-                        "cerulean": null,
-                        "cosmo": null,
-                        "cyborg": null,
-                        "darkly": null,
-                        "flatly": null,
-                        "journal": null,
-                        "litera": null,
-                        "lumen": null,
-                        "lux": null,
-                        "materia": null,
-                        "minty": null,
-                        "pulse": null,
-                        "sandstone": null,
-                        "simplex": null,
-                        "sketchy": null,
-                        "slate": null,
-                        "solar": null,
-                        "spacelab": null,
-                        "superhero": null,
-                        "united": null,
-                        "yeti": null
+                        "cerulean": "css\/cerulean.min.css",
+                        "cosmo": "css\/cosmo.min.css",
+                        "cyborg": "css\/cyborg.min.css",
+                        "darkly": "css\/darkly.min.css",
+                        "flatly": "css\/flatly.min.css",
+                        "journal": "css\/journal.min.css",
+                        "litera": "css\/litera.min.css",
+                        "lumen": "css\/lumen.min.css",
+                        "lux": "css\/lux.min.css",
+                        "materia": "css\/materia.min.css",
+                        "minty": "css\/minty.min.css",
+                        "pulse": "css\/pulse.min.css",
+                        "sandstone": "css\/sandstone.min.css",
+                        "simplex": "css\/simplex.min.css",
+                        "sketchy": "css\/sketchy.min.css",
+                        "slate": "css\/slate.min.css",
+                        "solar": "css\/solar.min.css",
+                        "spacelab": "css\/spacelab.min.css",
+                        "superhero": "css\/superhero.min.css",
+                        "united": "css\/united.min.css",
+                        "yeti": "css\/yeti.min.css"
                     }
                 }
             }
