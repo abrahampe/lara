@@ -1,0 +1,42 @@
+{
+    "groups": {
+        "themes": {
+            "icon": "fas fa-paint-brush",
+            "description": "Temas",
+            "items": {
+                "selected": {
+                    "icon": "fas fa-check-square",
+                    "description": "Tema atualmente selecionado",
+                    "value": "https:\/\/bootswatch.com\/4\/materia\/bootstrap.min.css"
+                },
+                "avaliable": {
+                    "icon": "fas fa-list",
+                    "description": "Temas dispon\u00edveis",
+                    "values": {
+                        "cerulean": null,
+                        "cosmo": null,
+                        "cyborg": null,
+                        "darkly": null,
+                        "flatly": null,
+                        "journal": null,
+                        "litera": null,
+                        "lumen": null,
+                        "lux": null,
+                        "materia": null,
+                        "minty": null,
+                        "pulse": null,
+                        "sandstone": null,
+                        "simplex": null,
+                        "sketchy": null,
+                        "slate": null,
+                        "solar": null,
+                        "spacelab": null,
+                        "superhero": null,
+                        "united": null,
+                        "yeti": null
+                    }
+                }
+            }
+        }
+    }
+}

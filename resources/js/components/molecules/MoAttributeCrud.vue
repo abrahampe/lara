@@ -8,12 +8,13 @@
     </div>
     <div class="card-body">
       <mo-theme-selector
-        variant="primary"
+        v-if="selectedParent.items"
+        variant="outline-primary"
         class="mb-3"
         :temas="selectedParent.items.avaliable.values"
+        @selectTheme="updateSelectedTheme($event)"
       ></mo-theme-selector>
 
-      <button class="mt-3 btn btn-primary">Adicionar item</button>
     </div>
   </div>
 </template>
@@ -31,6 +32,9 @@ export default {
     selectedParent: {
       type: Object
     },
+    fullSettings: {
+      type: Object
+    },
     defaultInfo: {
       type: Object
     }
@@ -39,6 +43,12 @@ export default {
     itemClick(index) {
       console.log(index);
       this.$emit("itemClick", index);
+    },
+    updateSelectedTheme(event){
+     const vm = this;
+
+      Vue.set(vm.fullSettings.groups.themes.items.selected, 'value' , event.value );
+
     }
   },
   data() {

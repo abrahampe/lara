@@ -19,4 +19,10 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/about', 'HomeController@about')->name('about');
+Route::post('/sett/save', 'SettingsController@write')->name('settings2');
 Route::get('/settings', 'HomeController@settings')->name('settings');
+
+Route::get('/setti/save',function(){
+    //return Configura::read();
+
+});

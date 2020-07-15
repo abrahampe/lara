@@ -17,7 +17,8 @@
                     You are logged in!
                      
                 </div>
-                  <example-component class="mb-5"></example-component>     
+                  <example-component class="mb-5"></example-component>  
+
                 <div class="alert alert-danger"> {{Config::get('themes.selected.default') ? Config::get('themes.selected.default') :  asset('css/app.css') }} </div>         
                 <div class="alert alert-danger">  
                 {{config(['themes.selected.default' => 'css/dark.css'])}}

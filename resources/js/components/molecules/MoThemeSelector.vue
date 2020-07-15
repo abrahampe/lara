@@ -1,16 +1,15 @@
 <template>
-
-    <b-button-group vertical >
-      <b-button
-        size="lg"
-        v-for="(theme, index) in arrayThemes"
-        :key="index"
-        :variant="variant"
-        :pressed="selectedTheme == theme.key"
-        @click="themeHelper.theme = theme.key"
-      >{{ theme.key | capitalize}}</b-button>
-    </b-button-group>
-
+  <div>
+    <b-button
+      size="lg"
+      v-for="(theme, index) in arrayThemes"
+      :key="index"
+      block
+      :variant="variant"
+      :pressed="selectedTheme == theme.key"
+      @click="chooseTheme(theme)"
+    >{{ theme.key | capitalize}}</b-button>
+  </div>
 </template>
 
 <script>
@@ -75,6 +74,13 @@ export default {
       selectedTheme: "default",
       loading: true
     };
+  },
+
+  methods: {
+    chooseTheme(theme) {
+      this.themeHelper.theme = theme.key;
+      this.$emit("selectTheme", theme);
+    }
   },
   watch: {
     themeHelper: {
