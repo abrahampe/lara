@@ -32,12 +32,9 @@ public function readObject()
 			throw new \RuntimeException("Invalid JSON in {$path}");
 		}
 
-			$collection = collect(
-				(object) $data,
-			);
-
+			$collection = collect((object) $data);
 		return $collection;
-    }
+	}
 
 
     	/**
