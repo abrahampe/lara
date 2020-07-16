@@ -30,7 +30,7 @@ export default {
   mounted() {
     this.settingsObject = Object.assign({}, this.loadSettings());
     const groups = this.settingsObject.groups;
-    const firstObject = Object.values(groups)[0];
+    const firstObject = groups ? Object.values(groups)[0] : {} ;
 
     if (firstObject) {
       this.selectedItem = Object.assign({}, firstObject);
