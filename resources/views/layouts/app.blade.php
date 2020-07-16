@@ -13,7 +13,9 @@
     <script src="{{ asset('js/app.js') }}" defer></script>
 
     <!-- Styles -->
-    <link href=" {{Configura::readObject()->get('themes')['selected'] ? asset(Configura::readObject()->get('themes')['selected']) :  asset('css/app.css') }}" rel="stylesheet">
+    <link href=" {{Configura::readObject()->get('themes')['selected'] ? asset(Configura::readObject()->get('themes')['selected']) :  asset('css/cerulean.css') }}" rel="stylesheet">
+
+
 
 </head>
 <body>

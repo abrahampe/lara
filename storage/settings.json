@@ -1,12 +1,1 @@
-{
-    "foo": "barra",
-    "themes": {
-        "selected": "css\/app.css",
-        "avaliable": {
-            "flatly": "https:\/\/bootswatch.com\/4\/flatly\/bootstrap.min.css",
-            "materia": "https:\/\/bootswatch.com\/4\/materia\/bootstrap.min.css",
-            "solar": "https:\/\/bootswatch.com\/4\/solar\/bootstrap.min.css",
-            "dark": "css\/dark.js"
-        }
-    }
-}
+{"foo":"barra","themes":{"selected":"css\/app.css","avaliable":{"flatly":"https:\/\/bootswatch.com\/4\/flatly\/bootstrap.min.css","materia":"https:\/\/bootswatch.com\/4\/materia\/bootstrap.min.css","solar":"https:\/\/bootswatch.com\/4\/solar\/bootstrap.min.css","dark":"css\/dark.js"}}}
