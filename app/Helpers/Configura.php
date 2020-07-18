@@ -7,36 +7,8 @@ use Illuminate\Filesystem\Filesystem;
 
 class Configura 
 {
-
-
-	public function read()
-	{
-		$path = storage_path() . '/settings.json';
-		$data = json_decode(file_get_contents($path), true);
-
-
-		if ($data === null) {
-			throw new \RuntimeException("Invalid JSON in {$path}");
-		}
-
-		return $data;
-	}
 	
-public function readObject()
-	{
-		$path = storage_path() . '/settings.json';
-		$data = json_decode(file_get_contents($path), true);
-
-
-		if ($data === null) {
-			throw new \RuntimeException("Invalid JSON in {$path}");
-		}
-
-			$collection = collect((object) $data);
-		return $collection;
-	}
-
-public function readThemes(string $status = null)
+public function read($path = '')
 	{
 		$path = storage_path() . '/settings2.json';
 		$data = json_decode(file_get_contents($path), true);
@@ -47,15 +19,9 @@ public function readThemes(string $status = null)
 		}
 
 			$collection = collect((object) $data);
-			if ($status == 'selected') {
-				$plucked =  $collection->pluck('themes.*.selected')->flatten()[4];
-
-			} else {
-				$plucked = $collection->pluck('themes.*.avaliable');
-			}
-			
-		return $plucked;
+		return $collection->pluck($path)->implode('');
 	}
+
 
     	/**
 	 * {@inheritdoc}

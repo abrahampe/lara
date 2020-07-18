@@ -21,9 +21,9 @@
                     You are logged in!
                      
                 </div>
-                {{Configura::readThemes('selected')}}
+                
                   <example-component class="mb-5"></example-component>  
-
+{{ Configura::read('themes.items.selected.value')}}
                 <div class="alert alert-danger"> {{Config::get('themes.selected.default') ? Config::get('themes.selected.default') :  asset('css/app.css') }} </div>         
                 <div class="alert alert-danger">  
                 {{config(['themes.selected.default' => 'css/dark.css'])}}

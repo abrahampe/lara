@@ -13,7 +13,7 @@
     <script src="{{ asset('js/app.js') }}" defer></script>
 
     <!-- Styles -->
-    <link href=" {{Configura::readThemes('selected') ? asset(Configura::readThemes('selected')) :  asset('css/app.css') }}" rel="stylesheet">
+    <link href=" {{ Configura::read('themes.items.selected.value') ? asset(Configura::read('themes.items.selected.value')) :  asset('css/app.css') }}" rel="stylesheet">
 
 
 
