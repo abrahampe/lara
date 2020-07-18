@@ -7,7 +7,7 @@
                 "selected": {
                     "icon": "fas fa-check-square",
                     "description": "Tema atualmente selecionado",
-                    "value": "css\/app.css"
+                    "value": "css\/docs.min.css"
                 },
                 "avaliable": {
                     "icon": "fas fa-list",
@@ -33,7 +33,8 @@
                         "spacelab": "css\/spacelab.min.css",
                         "superhero": "css\/superhero.min.css",
                         "united": "css\/united.min.css",
-                        "yeti": "css\/yeti.min.css"
+                        "yeti": "css\/yeti.min.css",
+                        "material": "css\/docs.min.css"
                     }
                 }
             }

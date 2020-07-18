@@ -36,6 +36,26 @@ public function readObject()
 		return $collection;
 	}
 
+public function readThemes(string $status = null)
+	{
+		$path = storage_path() . '/settings2.json';
+		$data = json_decode(file_get_contents($path), true);
+
+
+		if ($data === null) {
+			throw new \RuntimeException("Invalid JSON in {$path}");
+		}
+
+			$collection = collect((object) $data);
+			if ($status == 'selected') {
+				$plucked =  $collection->pluck('themes.*.selected')->flatten()[4];
+
+			} else {
+				$plucked = $collection->pluck('themes.*.avaliable');
+			}
+			
+		return $plucked;
+	}
 
     	/**
 	 * {@inheritdoc}
