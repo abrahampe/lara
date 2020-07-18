@@ -34,6 +34,10 @@ const store = new Vuex.Store(
 Vue.use(BootstrapVue); // Telling Vue to use this in whole application
 import VueFontAwesomePicker from "vfa-picker";
 Vue.use(VueFontAwesomePicker);
+
+import Vuetify from 'vuetify';
+Vue.use(Vuetify);
+
 import store from './store/store';
 
 Vue.component('example-component', require('./components/molecules/ExampleComponent.vue').default);
@@ -59,6 +63,7 @@ const i18n = new VueInternationalization({
  
 const app = new Vue({
     el: '#app',
+    vuetify: new Vuetify(),
     i18n, 
     store,
 });

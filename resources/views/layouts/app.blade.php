@@ -19,7 +19,7 @@
 
 </head>
 <body>
-    <div id="app">
+    <v-app id="app">
     <nav class="navbar navbar-expand-md navbar-light  shadow-sm fixed-top bg-light">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
@@ -95,6 +95,6 @@
         <main class="py-4">
             @yield('content')
         </main>
-    </div>
+    </v-app>
 </body>
 </html>
