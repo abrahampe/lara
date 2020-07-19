@@ -8,7 +8,7 @@ use Illuminate\Filesystem\Filesystem;
 class Configura 
 {
 	
-public function read($path = '')
+public function read($valuePath = '')
 	{
 		$path = storage_path() . '/settings2.json';
 		$data = json_decode(file_get_contents($path), true);
@@ -19,7 +19,8 @@ public function read($path = '')
 		}
 
 			$collection = collect((object) $data);
-		return $collection->pluck($path)->implode('');
+			$finalCollection = $collection->pluck($valuePath);
+		return $finalCollection;
 	}
 
 
